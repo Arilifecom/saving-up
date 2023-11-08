@@ -7,7 +7,7 @@ const FormattedDate = () => {
 
   return (
     <div>
-      <h2 className="">日付</h2>
+      <h2>日付</h2>
       <p className="border mr-2 rounded py-2 px-3.5">{formattedDate}</p>
     </div>
   );

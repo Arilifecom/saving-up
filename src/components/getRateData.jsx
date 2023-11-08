@@ -13,14 +13,12 @@ function GetRateData() {
 
   let Data = Object.values(data);
 
-  console.log(Data);
-
   return (
     <div>
       <h2>現地点のレート</h2>
       {Data.map((item) => (
-        <p className="border mr-2 rounded py-2 px-3.5" key={item}>
-          {item["5. Exchange Rate"]}
+        <p className="border rounded py-2 px-3.5" key={item}>
+          {Number(item["5. Exchange Rate"])}
         </p>
       ))}
     </div>
