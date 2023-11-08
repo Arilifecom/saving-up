@@ -81,7 +81,7 @@ const MainArea = () => {
                 <p>JPY￥</p>
                 <input
                   className="w-44 border border-gray-500  mr-2 rounded py-2 px-3.5"
-                  type="number"
+                  type="tel"
                   value={targetJPY}
                   placeholder="10000"
                   onChange={handleOnChangeTarget}
