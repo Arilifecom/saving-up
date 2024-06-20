@@ -1,28 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-function GetRateData() {
-  const [data, setData] = useState([]);
-
+function GetExchangeRate({ setExchangeRate, exchangeRate }) {
   useEffect(() => {
-    fetch(
-      "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=AUD&to_currency=JPY&apikey=7PV6050YEOLV42HS"
-    )
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
-
-  let Data = Object.values(data);
+    async function fetchExchangeRate() {
+      const response = await fetch(
+        `https://v6.exchangerate-api.com/v6/${process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY}/latest/AUD`
+      );
+      const data = await response.json();
+      setExchangeRate(parseFloat(data.conversion_rates.JPY).toFixed(2));
+    }
+    fetchExchangeRate();
+  }, [setExchangeRate]);
 
   return (
     <div>
       <h2>現地点のレート</h2>
-      {Data.map((item) => (
-        <p className="border rounded py-2 px-3.5" key={item}>
-          {Number(item["5. Exchange Rate"])}
-        </p>
-      ))}
+      <p className="border mr-2 rounded py-2 px-3.5">{exchangeRate}</p>
     </div>
   );
 }
 
-export default GetRateData;
+export default GetExchangeRate;
