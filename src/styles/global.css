@@ -1,0 +1,15 @@
+/* styles/globals.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Optional: you can apply the font family globally */
+body {
+  @apply font-zen;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  @apply appearance-none;
+  margin: 0;
+}
