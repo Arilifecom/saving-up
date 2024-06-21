@@ -5,7 +5,7 @@
 
 /* Optional: you can apply the font family globally */
 body {
-  @apply font-zen;
+  @apply: font-zen;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
