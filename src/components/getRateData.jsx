@@ -3,9 +3,16 @@ import { useEffect } from "react";
 function GetExchangeRate({ setExchangeRate, exchangeRate }) {
   useEffect(() => {
     async function fetchExchangeRate() {
-      const response = await fetch(`/api/exchangeRate`);
-      const data = await response.json();
-      setExchangeRate(parseFloat(data.conversion_rates.JPY).toFixed(2));
+      try {
+        const response = await fetch(`/api/exchangeRate`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setExchangeRate(parseFloat(data.conversion_rates.JPY).toFixed(2));
+      } catch (error) {
+        console.log("Failed to fetch exchange rate:", error);
+      }
     }
     fetchExchangeRate();
   }, [setExchangeRate]);
