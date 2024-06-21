@@ -1,3 +1,10 @@
+import {
+  CurrentMoneyIcon,
+  ExchangeIcon,
+  TargetDayIcon,
+  TargetIcon,
+} from "./Icons";
+
 const InputArea = ({
   targetJPY,
   targetAUD,
@@ -19,69 +26,84 @@ const InputArea = ({
   handleSubmit,
 }) => {
   return (
-    <div className="w-4/5 mx-auto mb-11">
-      <div className="mb-1">
-        <h2 className="text-lg">目標金額</h2>
-        <p className="text-xs">目標貯金額(半角数字)</p>
-      </div>
-      <div>
-        <p>JPY￥</p>
-        <input
-          className="w-44 border border-gray-500  mr-2 rounded py-2 px-3.5"
-          type="number"
-          value={targetJPY}
-          placeholder="10000"
-          onChange={handleOnChangeTarget}
-        />
-      </div>
-      <div>
-        <p>AUD$</p>
-        <p className="w-44  border border-gray-500 mr-2 rounded py-2 px-3.5 h-[38px]">
-          {targetAUD}
-        </p>
-      </div>
-      <div className="items-end mb-2">
-        <h2 className="text-lg">現在の貯金額</h2>
-        <p className="text-xs">日本円とAUDドル所持金 (半角数字)</p>
-      </div>
-      <div>
-        <p>JPY￥</p>
-        <input
-          className="w-44 border border-gray-500 mr-2 rounded py-2 px-3.5"
-          type="number"
-          value={currentValueJPY}
-          onChange={handleOnChangeCurrentValueJPY}
-        />
-      </div>
-      <p>↓</p>
-      <div>
-        <p>AUD$</p>
-        <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 h-[38px]">
-          {exchangeJPYtoAUD}
-        </p>
-      </div>
-      <div className="items-end">
-        <div>
-          <p>AUD$</p>
+    <div className="grid gap-7">
+      <div className="w-ful bg-light rounded-lg p-4 shadow-md">
+        <div className="flex place-items-center mb-10">
+          <TargetIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2 font-semibold">目標金額</h2>
+        </div>
+        <div className="mb-5">
+          <p>JPY</p>
           <input
-            className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5"
+            className="w-full border-[2px] rounded py-3 text-center text-2xl"
             type="number"
-            value={currentValueAUD}
-            onChange={handleOnChangeCurrentValueAUD}
+            value={targetJPY}
+            placeholder="10000"
+            onChange={handleOnChangeTarget}
           />
         </div>
-        <p>↓</p>
-        <div>
-          <p>JPY￥</p>
-          <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 h-[38px]">
-            {exchangeAUDtoJPY}
+        <ExchangeIcon className={"w-5 h-5 mx-auto"} />
+        <div className="mb-14">
+          <p>AUD</p>
+          <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
+            {targetAUD}
           </p>
         </div>
       </div>
-      <div>
-        <h2 className="text-lg mb-2">目標期日</h2>
+
+      <div className="w-ful bg-light rounded-lg p-4 shadow-md">
+        <div className="flex place-items-center mb-9">
+          <CurrentMoneyIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2 font-semibold">現在の貯金額</h2>
+        </div>
+        <p className="mb-9 text-center">日本円の貯金</p>
+        <div className="mb-5">
+          <p>JPY￥</p>
+          <input
+            className="w-full border-[2px] rounded py-3 text-center text-2xl"
+            type="number"
+            value={currentValueJPY}
+            placeholder="10000"
+            onChange={handleOnChangeCurrentValueJPY}
+          />
+        </div>
+        <ExchangeIcon className={"w-5 h-5 mx-auto"} />
+        <div className="mb-10">
+          <p>AUD$</p>
+          <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
+            {exchangeJPYtoAUD}
+          </p>
+        </div>
+
+        <div className="mb-14">
+          <p className="mb-9 text-center">オーストラリアドルの貯金</p>
+          <div className="mb-5">
+            <p>AUD$</p>
+            <input
+              className="w-full border-[2px] rounded py-3 text-center text-2xl"
+              type="number"
+              value={currentValueAUD}
+              placeholder="10000"
+              onChange={handleOnChangeCurrentValueAUD}
+            />
+          </div>
+          <ExchangeIcon className={"w-5 h-5 mx-auto"} />
+          <div>
+            <p>JPY￥</p>
+            <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
+              {exchangeAUDtoJPY}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-ful bg-light rounded-lg p-4 shadow-md">
+        <div className="flex place-items-center mb-10">
+          <TargetDayIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2 font-semibold">目標期日</h2>
+        </div>
         <input
-          className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5"
+          className="w-full border-[2px] rounded py-3 text-center text-2xl pr-3"
           type="date"
           value={targetData}
           onChange={(e) => setInputData(e.target.value)}
@@ -89,10 +111,10 @@ const InputArea = ({
       </div>
 
       <button
-        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
         onClick={handleSubmit}
+        className="text-xl text-pink py-4 bg-blue rounded mb-14 mt-4 shadow-md w-48 mx-auto cursor-pointer"
       >
-        Submit
+        計算する
       </button>
     </div>
   );

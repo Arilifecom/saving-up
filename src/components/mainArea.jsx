@@ -87,27 +87,29 @@ const MainArea = ({ exchangeRate }) => {
 
   return (
     <div>
-      <InputArea
-        targetJPY={targetJPY}
-        targetAUD={targetAUD}
-        currentValueJPY={currentValueJPY}
-        currentValueAUD={currentValueAUD}
-        exchangeJPYtoAUD={exchangeJPYtoAUD}
-        exchangeAUDtoJPY={exchangeAUDtoJPY}
-        targetData={targetData}
-        setTargetJPY={setTargetJPY}
-        setTargetAUD={setTargetAUD}
-        setCurrentValueJPY={setCurrentValueJPY}
-        setCurrentValueAUD={setCurrentValueAUD}
-        setExchangeValueAUD={setExchangeValueAUD}
-        setExchangeValueJPY={setExchangeValueJPY}
-        setInputData={setInputData}
-        handleOnChangeTarget={handleOnChangeTarget}
-        handleOnChangeCurrentValueJPY={handleOnChangeCurrentValueJPY}
-        handleOnChangeCurrentValueAUD={handleOnChangeCurrentValueAUD}
-        handleSubmit={handleSubmit}
-      />
-      <ResultArea {...results} />
+      <div className="md:flex">
+        <InputArea
+          targetJPY={targetJPY}
+          targetAUD={targetAUD}
+          currentValueJPY={currentValueJPY}
+          currentValueAUD={currentValueAUD}
+          exchangeJPYtoAUD={exchangeJPYtoAUD}
+          exchangeAUDtoJPY={exchangeAUDtoJPY}
+          targetData={targetData}
+          setTargetJPY={setTargetJPY}
+          setTargetAUD={setTargetAUD}
+          setCurrentValueJPY={setCurrentValueJPY}
+          setCurrentValueAUD={setCurrentValueAUD}
+          setExchangeValueAUD={setExchangeValueAUD}
+          setExchangeValueJPY={setExchangeValueJPY}
+          setInputData={setInputData}
+          handleOnChangeTarget={handleOnChangeTarget}
+          handleOnChangeCurrentValueJPY={handleOnChangeCurrentValueJPY}
+          handleOnChangeCurrentValueAUD={handleOnChangeCurrentValueAUD}
+          handleSubmit={handleSubmit}
+        />
+        <ResultArea {...results} />
+      </div>
     </div>
   );
 };

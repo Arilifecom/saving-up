@@ -1,3 +1,10 @@
+import {
+  AmountIcon,
+  ExchangeIcon,
+  ProgressIcon,
+  WeeklyTagetIcon,
+} from "./Icons";
+
 const ResultArea = ({
   savingAmountJPY,
   savingAmountAUD,
@@ -15,71 +22,75 @@ const ResultArea = ({
   };
 
   return (
-    <div className="bg-white w-full rounded-2xl rounded-t-none h-full py-11">
-      <div className="w-4/5 mx-auto">
-        <div>
-          <h2 className="text-lg mb-2">資産総額（JPY = AUD）</h2>
-          <div className="items-end">
-            <div>
-              <p>JPY</p>
-              <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-                {formatNumber(savingAmountJPY)}
-              </p>
-            </div>
-            <p>↓</p>
-            <div>
-              <p>AUD</p>
-              <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-                {formatNumber(savingAmountAUD)}
-              </p>
-            </div>
-          </div>
+    <div className="grid gap-7 pb-14">
+      <div className="w-ful bg-light rounded-lg p-4 shadow-md">
+        <div className="flex place-items-center mb-10">
+          <AmountIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2">資産総額</h2>
         </div>
-        <div className="mb-6">
-          <h2 className="text-lg mb-2">目標まで残り</h2>
-          <div className="items-end">
-            <div>
-              <p>JPY</p>
-              <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-                {formatNumber(remainingJPY)}
-              </p>
-            </div>
-            <p>↓</p>
-            <div>
-              <p>AUD</p>
-              <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-                {formatNumber(remainingAUD)}
-              </p>
-            </div>
-          </div>
+        <div className="mb-5">
+          <p>JPY</p>
+          <p className="w-full border-[2px] rounded py-3 text-center text-2xl">
+            {formatNumber(savingAmountJPY)}
+          </p>
         </div>
-        <div>
-          <h2 className="text-lg mb-2">週ごとの必要貯金額</h2>
-          <div className="mb-2">
-            <p>JPY</p>
-            <div className="items-end">
-              <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-                {formatNumber(weeklyTargetJPY)}
-              </p>
-              <p>/ 週</p>
-            </div>
-          </div>
-          <div className="mb-2">
-            <p>AUD</p>
-            <div className="items-end">
-              <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-                {formatNumber(weeklyTargetAUD)}
-              </p>
-              <p>/ weeks</p>
-            </div>
-          </div>
-          <p className="mr-2">残り</p>
-          <div className="items-end">
-            <p className="w-44 border  border-gray-500 mr-2 rounded py-2 px-3.5 bg-white">
-              {formatNumber(remainingWeeks)}
+        <ExchangeIcon className={"w-5 h-5 mx-auto"} />
+        <div className="mb-14">
+          <p>AUD</p>
+          <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
+            {formatNumber(savingAmountAUD)}
+          </p>
+        </div>
+      </div>
+      <div className="w-ful bg-light rounded-lg p-4 shadow-md">
+        <div className="flex place-items-center mb-10">
+          <ProgressIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2">目標まで残り</h2>
+        </div>
+        <div className="mb-5">
+          <p>JPY</p>
+          <p className="w-full border-[2px] rounded py-3 text-center text-2xl">
+            {formatNumber(remainingJPY)}
+          </p>
+        </div>
+        <ExchangeIcon className={"w-5 h-5 mx-auto"} />
+        <div className="mb-14">
+          <p>AUD</p>
+          <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
+            {formatNumber(remainingAUD)}
+          </p>
+        </div>
+      </div>
+
+      <div className="w-ful bg-light rounded-lg p-4 shadow-md">
+        <div className="flex place-items-center mb-10">
+          <WeeklyTagetIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2">週ごとの必要貯金額</h2>
+        </div>
+        <div className="mb-5">
+          <p>JPY</p>
+          <div className="flex items-center">
+            <p className="w-[80%] border-[2px] rounded py-3 text-center text-2xl">
+              {formatNumber(weeklyTargetJPY)}
             </p>
-            <p>/ 週間</p>
+            <p className="ml-2">/ 週</p>
           </div>
+        </div>
+        <div className="mb-2">
+          <p>AUD</p>
+          <div className="flex items-center">
+            <p className="w-[80%] border-[2px] rounded py-3 text-center text-2xl">
+              {formatNumber(weeklyTargetAUD)}
+            </p>
+            <p className="ml-2">/ weeks</p>
+          </div>
+        </div>
+        <p className="mr-2">残り</p>
+        <div className="flex items-center">
+          <p className="w-[80%] border-[2px] rounded py-3 text-center text-2xl">
+            {formatNumber(remainingWeeks)}
+          </p>
+          <p className="ml-2">/ 週間</p>
         </div>
       </div>
     </div>
