@@ -7,7 +7,7 @@ export default function Home() {
   const [exchangeRate, setExchangeRate] = useState(null);
 
   return (
-    <div className="max-w-6xl flex flex-col mx-auto relative">
+    <>
       <div className="flex justify-end mb-2">
         <TodaysDate />
         <GetExchangeRate
@@ -15,9 +15,7 @@ export default function Home() {
           exchangeRate={exchangeRate}
         />
       </div>
-      <div className="min-h-min border-2 border-gray-900 rounded-2xl">
-        <MainArea exchangeRate={exchangeRate} />
-      </div>
-    </div>
+      <MainArea exchangeRate={exchangeRate} />
+    </>
   );
 }
