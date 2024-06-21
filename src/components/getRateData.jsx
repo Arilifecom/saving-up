@@ -3,9 +3,7 @@ import { useEffect } from "react";
 function GetExchangeRate({ setExchangeRate, exchangeRate }) {
   useEffect(() => {
     async function fetchExchangeRate() {
-      const response = await fetch(
-        `https://v6.exchangerate-api.com/v6/${process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY}/latest/AUD`
-      );
+      const response = await fetch(`/api/exchangeRate`);
       const data = await response.json();
       setExchangeRate(parseFloat(data.conversion_rates.JPY).toFixed(2));
     }
