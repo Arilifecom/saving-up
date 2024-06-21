@@ -19,7 +19,7 @@ function GetExchangeRate({ setExchangeRate, exchangeRate }) {
 
   return (
     <div>
-      <h2>現地点のレート</h2>
+      <h2>現在のレート</h2>
       <p className="border mr-2 rounded py-2 px-3.5">{exchangeRate}</p>
     </div>
   );
