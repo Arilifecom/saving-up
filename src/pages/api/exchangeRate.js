@@ -1,6 +1,6 @@
 // pages/api/exchangeRate.js
 export default async function handler(req, res) {
-  const apiKey = process.env.EXCHANGE_RATE_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY;
   const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`;
 
   try {
