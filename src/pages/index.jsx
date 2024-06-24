@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TodaysDate from "../components/TodaysDate";
 import GetExchangeRate from "../components/getRateData";
-import MainArea from "../components/MainArea";
+import MainArea from "../components/mainArea";
 
 export default function Home() {
   const [exchangeRate, setExchangeRate] = useState(null);
