@@ -12,9 +12,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Header />
       <main className="bg-pink w-full min-h-screen text-sm text-blue px-4">
-        <div className="md:w-[50%] md:mx-auto">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       </main>
       <Footer />
     </>
