@@ -28,7 +28,9 @@ const InputArea = ({
             <h2 className="text-lg ml-2 font-semibold">目標金額</h2>
           </div>
           <div className="mb-5">
-            <p>JPY</p>
+            <p>
+              JPY<span className="font-bold text-base text-primary">¥</span>
+            </p>
             <input
               className="w-full border-[2px] rounded py-3 text-center text-2xl"
               type="number"
@@ -39,7 +41,9 @@ const InputArea = ({
           </div>
           <ExchangeIcon className={"w-5 h-5 mx-auto"} />
           <div className="mb-14">
-            <p>AUD</p>
+            <p>
+              AUD<span className="font-bold text-base text-primary">$</span>
+            </p>
             <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
               {targetAUD}
             </p>
@@ -53,7 +57,9 @@ const InputArea = ({
           </div>
           <p className="text-center md:text-base">日本円の貯金</p>
           <div className="mb-5">
-            <p>JPY￥</p>
+            <p>
+              JPY<span className="font-bold text-base text-primary">￥</span>
+            </p>
             <input
               className="w-full border-[2px] rounded py-3 text-center text-2xl"
               type="number"
@@ -64,7 +70,9 @@ const InputArea = ({
           </div>
           <ExchangeIcon className={"w-5 h-5 mx-auto"} />
           <div className="mb-10">
-            <p>AUD$</p>
+            <p>
+              AUD<span className="font-bold text-base text-primary">$</span>
+            </p>
             <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
               {exchangeJPYtoAUD}
             </p>
@@ -73,7 +81,9 @@ const InputArea = ({
           <div className="mb-14">
             <p className="text-center md:text-base">オーストラリアドルの貯金</p>
             <div className="mb-5">
-              <p>AUD$</p>
+              <p>
+                AUD<span className="font-bold text-base text-primary">$</span>
+              </p>
               <input
                 className="w-full border-[2px] rounded py-3 text-center text-2xl"
                 type="number"
@@ -84,7 +94,9 @@ const InputArea = ({
             </div>
             <ExchangeIcon className={"w-5 h-5 mx-auto"} />
             <div>
-              <p>JPY￥</p>
+              <p>
+                JPY<span className="font-bold text-base text-primary">¥</span>
+              </p>
               <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
                 {exchangeAUDtoJPY}
               </p>

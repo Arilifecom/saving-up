@@ -29,14 +29,18 @@ const ResultArea = ({
           <h2 className="text-lg ml-2">資産総額</h2>
         </div>
         <div className="mb-5">
-          <p>JPY</p>
+          <p>
+            JPY<span className="font-bold text-base text-primary">¥</span>
+          </p>
           <p className="w-full border-[2px] rounded py-3 text-center text-2xl">
             {formatNumber(savingAmountJPY)}
           </p>
         </div>
         <ExchangeIcon className={"w-5 h-5 mx-auto"} />
         <div className="mb-14">
-          <p>AUD</p>
+          <p>
+            AUD<span className="font-bold text-base text-primary">$</span>
+          </p>
           <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
             {formatNumber(savingAmountAUD)}
           </p>
@@ -48,14 +52,18 @@ const ResultArea = ({
           <h2 className="text-lg ml-2">目標まで残り</h2>
         </div>
         <div className="mb-5">
-          <p>JPY</p>
+          <p>
+            JPY<span className="font-bold text-base text-primary">¥</span>
+          </p>
           <p className="w-full border-[2px] rounded py-3 text-center text-2xl">
             {formatNumber(remainingJPY)}
           </p>
         </div>
         <ExchangeIcon className={"w-5 h-5 mx-auto"} />
         <div className="mb-14">
-          <p>AUD</p>
+          <p>
+            AUD<span className="font-bold text-base text-primary">$</span>
+          </p>
           <p className="w-full h-[60px] bg-pink rounded py-3 text-center text-2xl">
             {formatNumber(remainingAUD)}
           </p>
@@ -68,7 +76,9 @@ const ResultArea = ({
           <h2 className="text-lg ml-2">週ごとの必要貯金額</h2>
         </div>
         <div className="mb-5">
-          <p>JPY</p>
+          <p>
+            JPY<span className="font-bold text-base text-primary">¥</span>
+          </p>
           <div className="flex items-center">
             <p className="w-[80%] border-[2px] rounded py-3 text-center text-2xl">
               {formatNumber(weeklyTargetJPY)}
@@ -77,7 +87,9 @@ const ResultArea = ({
           </div>
         </div>
         <div className="mb-2">
-          <p>AUD</p>
+          <p>
+            AUD<span className="font-bold text-base text-primary">$</span>
+          </p>
           <div className="flex items-center">
             <p className="w-[80%] border-[2px] rounded py-3 text-center text-2xl">
               {formatNumber(weeklyTargetAUD)}
