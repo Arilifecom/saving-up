@@ -22,7 +22,7 @@ const ResultArea = ({
   };
 
   return (
-    <div className="grid gap-7 pb-14">
+    <div className="grid gap-7 pb-14 md:max-w-3xl mx-auto">
       <div className="w-ful bg-light rounded-lg p-4 shadow-md">
         <div className="flex place-items-center mb-10">
           <AmountIcon className={"w-10 h-10"} />
