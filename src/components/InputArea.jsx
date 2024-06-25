@@ -117,13 +117,6 @@ const InputArea = ({
           />
         </div>
       </div>
-
-      <button
-        onClick={handleSubmit}
-        className="flex items-center justify-center mx-auto text-xl text-pink py-4 bg-blue rounded mb-24 mt-14 shadow-md w-48 cursor-pointer"
-      >
-        計算する
-      </button>
     </>
   );
 };
