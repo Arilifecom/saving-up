@@ -157,9 +157,10 @@ const InputArea = ({
         </div>
 
         <input
-          className="w-full min-w-[320px] my-auto border-[3px] rounded py-3 text-center text-2xl pr-3 mb-14"
+          className="w-full min-w-[300px] my-auto border-[3px] rounded py-3 text-center text-2xl pr-3 mb-14"
           type="date"
           value={targetData}
+          placeholder="年/月/日"
           onChange={(e) => setInputData(e.target.value)}
         />
       </div>
