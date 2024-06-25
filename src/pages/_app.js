@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
-      <main className="bg-pink w-full min-h-screen text-sm text-blue px-4">
+      <main className="bg-bg_pink w-full min-h-screen text-sm text-textColor">
         <Component {...pageProps} />
       </main>
       <Footer />

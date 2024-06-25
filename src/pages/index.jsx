@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-end mb-2 md:max-w-5xl mx-auto">
+      <div className="flex justify-end mb-2 md:max-w-3xl mx-auto">
         <TodaysDate />
         <GetExchangeRate
           setExchangeRate={setExchangeRate}

@@ -63,11 +63,11 @@ function ButtonApp({ handleSubmit }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-w-[320px] min-h-[120px] mb-16">
+    <div className="flex justify-center items-center min-w-[320px] py-16">
       <div ref={scope}>
         <button
           onClick={onButtonClick}
-          className="relative rounded-full border-2 border-blue px-6 py-2 text-2xl text-blue transition-colors hover:bg-blue hover:text-light z-100"
+          className="relative rounded-full text-headline font-semibold bg-[#ff8ba7] px-16 py-4 text-xl transition-colors shadow-md hover:shadow-none z-100"
         >
           {buttonText}
           <span
