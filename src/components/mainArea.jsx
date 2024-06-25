@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputArea from "./InputArea";
 import ResultArea from "./ResultArea";
+import ButtonApp from "./ButtonApp";
 
 const MainArea = ({ exchangeRate }) => {
   const [targetJPY, setTargetJPY] = useState("");
@@ -107,6 +108,7 @@ const MainArea = ({ exchangeRate }) => {
         handleOnChangeCurrentValueAUD={handleOnChangeCurrentValueAUD}
         handleSubmit={handleSubmit}
       />
+      <ButtonApp handleSubmit={handleSubmit} />
       <ResultArea {...results} />
     </div>
   );
