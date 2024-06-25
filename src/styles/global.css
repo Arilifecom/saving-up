@@ -8,6 +8,10 @@ body {
   @apply: font-zen;
 }
 
+h2 {
+  color: #33272a;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   @apply appearance-none;
