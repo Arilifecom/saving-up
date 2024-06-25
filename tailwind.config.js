@@ -10,9 +10,11 @@ module.exports = {
       md: { min: "768px" },
     },
     colors: {
-      pink: "#FFEAE3",
+      bg_pink: "#FFEAE3",
+      headline: "#33272a",
+      textColor: "#594a4e",
       blue: "#121481",
-      primary: "#FF8BA7",
+      primary: "#ffc6c7",
       light: "#ffffff",
     },
     extend: {
