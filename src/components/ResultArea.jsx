@@ -31,7 +31,9 @@ const ResultArea = ({
         </div>
         <div class="flex items-center justify-end">
           <div class="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            JPYとAUDを合わせたあなたが持っている貯金額の総額だよ
+            JPYとAUDを合わせた現在あなたが
+            <br />
+            持っている貯金額の総額だよ
           </div>
           <div class="w-3 overflow-hidden ">
             <div class="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
@@ -102,7 +104,9 @@ const ResultArea = ({
         </div>
         <div class="flex items-center justify-end">
           <div class="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            1週間ごとに下の金額を貯め続ければ、目標金額に届くよ。
+            1週間ごとに下の金額を貯め続ければ、
+            <br />
+            目標金額に到達するよ
           </div>
           <div class="w-3 overflow-hidden ">
             <div class="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
