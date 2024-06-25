@@ -147,7 +147,8 @@ const InputArea = ({
         </div>
         <div className="flex items-center justify-end">
           <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            いつまでに貯めたい？ 目標の期日を入力してね。
+            いつまでに貯めたい？ <br />
+            目標の期日を入力してね。
           </div>
           <div className="w-3 overflow-hidden ">
             <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>

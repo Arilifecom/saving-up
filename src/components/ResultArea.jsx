@@ -31,9 +31,9 @@ const ResultArea = ({
         </div>
         <div class="flex items-center justify-end">
           <div class="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            JPYとAUDを合わせた現在あなたが
+            あなたが持っているJPYとAUDの
             <br />
-            持っている貯金額の総額だよ
+            貯金を全部合わせた金額だよ
           </div>
           <div class="w-3 overflow-hidden ">
             <div class="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
