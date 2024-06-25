@@ -268,16 +268,19 @@ export const WeeklyTagetIcon = ({ className, ...rest }) => (
 export const ExchangeIcon = ({ className, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={50}
-    height={69}
-    viewBox="0 0 50 69"
+    width={64}
+    height={64}
+    viewBox="0 0 24 24"
     fill="none"
     {...rest}
     className={className}
   >
     <path
-      fill="#121481"
-      d="M29.233 47.31a4.301 4.301 0 0 0 7.948 2.282l11.559-11.56a4.301 4.301 0 0 0-6.083-6.081l-4.822 4.822V4.3a4.3 4.3 0 1 0-8.602 0V47.31ZM20.766 21.505a4.3 4.3 0 0 0-7.947-2.282l-11.56 11.56a4.3 4.3 0 1 0 6.083 6.082l4.823-4.823v32.472a4.3 4.3 0 1 0 8.601 0V21.505Z"
+      stroke="#33272a"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 6v12m0 0-5-5m5 5 5-5"
     />
   </svg>
 );
