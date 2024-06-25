@@ -11,6 +11,7 @@ const MainArea = ({ exchangeRate }) => {
   const [currentValueAUD, setCurrentValueAUD] = useState("");
   const [exchangeAUDtoJPY, setExchangeValueJPY] = useState("");
   const [targetData, setInputData] = useState("");
+  const [showResults, setShowResults] = useState(false);
 
   const [results, setResults] = useState({
     savingAmountJPY: "N/A",
@@ -84,6 +85,8 @@ const MainArea = ({ exchangeRate }) => {
       weeklyTargetAUD: isNaN(weeklyTargetAUD) ? "N/A" : weeklyTargetAUD,
       remainingWeeks: isNaN(remainingWeeks) ? "N/A" : remainingWeeks,
     });
+
+    setShowResults(true);
   };
 
   return (
@@ -109,7 +112,7 @@ const MainArea = ({ exchangeRate }) => {
         handleSubmit={handleSubmit}
       />
       <ButtonApp handleSubmit={handleSubmit} />
-      <ResultArea {...results} />
+      {showResults && <ResultArea {...results} />}
     </div>
   );
 };
