@@ -29,14 +29,14 @@ const ResultArea = ({
           <AmountIcon className={"w-10 h-10"} />
           <h2 className="text-lg font-semibold ml-2">資産総額</h2>
         </div>
-        <div class="flex items-center justify-end">
-          <div class="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
+        <div className="flex items-center justify-end">
+          <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
             あなたが持っているJPYとAUDの
             <br />
             貯金を全部合わせた金額だよ
           </div>
-          <div class="w-3 overflow-hidden ">
-            <div class="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
+          <div className="w-3 overflow-hidden ">
+            <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
           </div>
           <Icon className={"w-[50px] h-[50px] relative"} />
           <span className="absolute rounded-full w-[50px] h-[50px] border" />
@@ -66,12 +66,12 @@ const ResultArea = ({
           <ProgressIcon className={"w-10 h-10"} />
           <h2 className="text-lg font-semibold ml-2">目標まで残り</h2>
         </div>
-        <div class="flex items-center justify-end">
-          <div class="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
+        <div className="flex items-center justify-end">
+          <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
             目標達成までの残りをJPYとAUDで見てみよう
           </div>
-          <div class="w-3 overflow-hidden ">
-            <div class="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
+          <div className="w-3 overflow-hidden ">
+            <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
           </div>
           <Icon className={"w-[50px] h-[50px] relative"} />
           <span className="absolute rounded-full w-[50px] h-[50px] border" />
@@ -102,14 +102,14 @@ const ResultArea = ({
           <WeeklyTagetIcon className={"w-10 h-10"} />
           <h2 className="text-lg font-semibold ml-2">週ごとの必要貯金額</h2>
         </div>
-        <div class="flex items-center justify-end">
-          <div class="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
+        <div className="flex items-center justify-end">
+          <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
             1週間ごとに下の金額を貯め続ければ、
             <br />
             目標金額に到達するよ
           </div>
-          <div class="w-3 overflow-hidden ">
-            <div class="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
+          <div className="w-3 overflow-hidden ">
+            <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
           </div>
           <Icon className={"w-[50px] h-[50px] relative"} />
           <span className="absolute rounded-full w-[50px] h-[50px] border" />
