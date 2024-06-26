@@ -4,7 +4,6 @@ import GetExchangeRate from "../components/GetExchangeRate";
 import InputArea from "../components/InputArea";
 import SubmitBtn from "../components/SubmitBtn";
 import ResultArea from "../components/ResultArea";
-import RefreshBtn from "../components/RefreshBtn";
 import CustomAlert from "../components/CustomAlert";
 import { calculateResults } from "../utils/calculateResults";
 
@@ -46,17 +45,6 @@ export default function Home() {
     setShowResults(true);
   };
 
-  const handleRefresh = () => {
-    setInputData({
-      targetJPY: "",
-      currentValueJPY: "",
-      currentValueAUD: "",
-      targetDate: "",
-    });
-    setResults({});
-    setShowResults(false);
-  };
-
   const closeAlert = () => {
     setAlertMessage("");
   };
@@ -74,7 +62,6 @@ export default function Home() {
       />
       <SubmitBtn onSubmit={handleSubmit} />
       {showResults && <ResultArea results={results} />}
-      <RefreshBtn onRefresh={handleRefresh} />
       {alertMessage && (
         <CustomAlert message={alertMessage} onClose={closeAlert} />
       )}
