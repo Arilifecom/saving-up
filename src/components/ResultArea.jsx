@@ -1,3 +1,4 @@
+import React from "react";
 import {
   AmountIcon,
   ExchangeIcon,
@@ -6,24 +7,16 @@ import {
   WeeklyTagetIcon,
 } from "./Icons";
 
-const ResultArea = ({
-  savingAmountJPY,
-  savingAmountAUD,
-  remainingJPY,
-  remainingAUD,
-  weeklyTargetJPY,
-  weeklyTargetAUD,
-  remainingWeeks,
-}) => {
-  const formatNumber = (number) => {
-    if (isNaN(number) || number === "N/A") {
-      return "N/A";
-    }
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
+const ResultArea = ({ results }) => {
   return (
-    <div className="grid gap-7 py-14 px-4 md:max-w-xl mx-auto">
+    <div className="grid gap-7 pb-14 px-4 md:max-w-xl mx-auto">
+      <div className="flex justify-center items-center">
+        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
+        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
+        <p className="text-2xl font-medium animate-bounce">結果をチェック</p>
+        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
+        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
+      </div>
       <div className="w-ful bg-light rounded-lg p-4 shadow-md">
         <div className="flex place-items-center">
           <AmountIcon className={"w-10 h-10"} />
@@ -43,24 +36,23 @@ const ResultArea = ({
         </div>
 
         <div className="mb-5 flex justify-center items-end my-4">
-          <p className="font-bold text-4xl text-primary">¥</p>
-          <p className="w-full border-b-[3px] py-3 text-center text-2xl bg-light text-headline">
-            {formatNumber(savingAmountJPY)}
+          <p className="w-[80%] border-b-[3px] py-3 text-center text-3xl bg-light text-headline">
+            {results.savingAmountJPY}
           </p>
-          <p className="text-2xl">円</p>
+          <p className="text-2xl ml-6">円</p>
         </div>
         <div className="flex justify-center items-center pt-3 pb-6">
           <p>AUDにすると</p>
           <ExchangeIcon className={"w-5 h-5 animate-bounce"} />
         </div>
         <div className="mb-14 flex justify-center items-end">
-          <p className="font-bold text-4xl text-primary">$</p>
-          <p className="w-full h-[60px] bg-bg_pink rounded py-3 text-center text-2xl  text-headline">
-            {formatNumber(savingAmountAUD)}
+          <p className="w-[80%] h-[60px] bg-bg_pink rounded py-3 text-center text-3xl  text-headline">
+            {results.savingAmountAUD}
           </p>
-          <p className="text-2xl">AUD</p>
+          <p className="text-2xl ml-6">AUD</p>
         </div>
       </div>
+
       <div className="w-ful bg-light rounded-lg p-4 shadow-md">
         <div className="flex place-items-center">
           <ProgressIcon className={"w-10 h-10"} />
@@ -78,25 +70,22 @@ const ResultArea = ({
         </div>
 
         <div className="mb-5 flex justify-center items-end my-4">
-          <p className="font-bold text-4xl text-primary">¥</p>
-          <p className="w-full border-b-[3px] py-3 text-center text-2xl bg-light text-headline">
-            {formatNumber(remainingJPY)}
+          <p className="w-[80%] border-b-[3px] py-3 text-center text-3xl bg-light text-headline">
+            {results.remainingJPY}
           </p>
-          <p className="text-2xl">円</p>
+          <p className="text-2xl ml-4">円</p>
         </div>
         <div className="flex justify-center items-center pt-3 pb-6">
           <p>AUDにすると</p>
           <ExchangeIcon className={"w-5 h-5 animate-bounce"} />
         </div>
         <div className="mb-14 flex justify-center items-end">
-          <p className="font-bold text-4xl text-primary">$</p>
-          <p className="w-full h-[60px] bg-bg_pink rounded py-3 text-center text-2xl text-headline">
-            {formatNumber(remainingAUD)}
+          <p className="w-[80%] h-[60px] bg-bg_pink rounded py-3 text-center text-3xl text-headline">
+            {results.remainingAUD}
           </p>
-          <p className="text-2xl">AUD</p>
+          <p className="text-2xl ml-4">AUD</p>
         </div>
       </div>
-
       <div className="w-ful bg-light rounded-lg p-4 shadow-md">
         <div className="flex place-items-center">
           <WeeklyTagetIcon className={"w-10 h-10"} />
@@ -114,13 +103,11 @@ const ResultArea = ({
           <Icon className={"w-[50px] h-[50px] relative"} />
           <span className="absolute rounded-full w-[50px] h-[50px] border" />
         </div>
-
         <div className="mb-5 flex justify-center items-end my-4">
-          <p className="font-bold text-4xl text-primary">¥</p>
-          <p className="w-full border-b-[3px] py-3 text-center text-2xl bg-light text-headline">
-            {formatNumber(weeklyTargetJPY)}
+          <p className="w-[80%] border-b-[3px] py-3 text-center text-3xl bg-light text-headline">
+            {results.weeklyTargetJPY}
           </p>
-          <p className="text-2xl">円</p>
+          <p className="text-2xl m-4">/ 週</p>
         </div>
         <div className="flex justify-center items-center pt-3 pb-6">
           <p>AUDにすると</p>
@@ -128,18 +115,17 @@ const ResultArea = ({
         </div>
 
         <div className="mb-14 flex justify-center items-end">
-          <p className="font-bold text-4xl text-primary">$</p>
-          <p className="w-full h-[60px] bg-bg_pink rounded py-3 text-center text-2xl text-headline">
-            {formatNumber(weeklyTargetAUD)}
+          <p className="w-[80%] h-[60px] bg-bg_pink rounded py-3 text-center text-3xl text-headline">
+            {results.weeklyTargetAUD}
           </p>
-          <p className="text-2xl">AUD</p>
+          <p className="text-2xl ml-4">/ Week</p>
         </div>
-        <p className="text-2xl">目標期日まで残り</p>
+        <h2 className="text-lg font-semibold ml-2">目標期日まで残り</h2>
         <div className="flex items-center mb-14">
-          <p className="w-[80%] border-[3px] bg-light rounded py-3 text-center text-2xl text-headline">
-            {formatNumber(remainingWeeks)}
+          <p className="w-[80%] border-[3px] bg-light rounded py-3 text-center text-3xl text-headline">
+            {results.remainingWeeks}
           </p>
-          <p className="ml-2 text-2xl">/ 週間</p>
+          <p className="text-2xl ml-4">/ 週間</p>
         </div>
       </div>
     </div>
