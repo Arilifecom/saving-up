@@ -7,9 +7,7 @@ const GetExchangeRate = ({ setExchangeRate }) => {
     // Fetch the exchange rate from an API
     const fetchExchangeRate = async () => {
       try {
-        const response = await fetch(
-          "https://api.exchangerate-api.com/v4/latest/AUD"
-        );
+        const response = await fetch(`/api/exchangeRate`);
         const data = await response.json();
         const rate = data.rates.JPY;
         setExchangeRate(rate);
