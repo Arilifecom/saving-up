@@ -4,19 +4,20 @@ const GetExchangeRate = ({ setExchangeRate }) => {
   const [rate, setRate] = useState(null);
 
   useEffect(() => {
-    // Fetch the exchange rate from an API
-    const fetchExchangeRate = async () => {
+    async function fetchExchangeRate() {
       try {
         const response = await fetch(`/api/exchangeRate`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
-        const rate = data.rates.JPY;
-        setExchangeRate(rate);
-        setRate(rate.toFixed(2));
+        const roundedRate = parseFloat(data.conversion_rates.JPY).toFixed(2);
+        setExchangeRate(roundedRate);
+        setRate(roundedRate);
       } catch (error) {
-        console.error("Error fetching exchange rate:", error);
+        console.log("Failed to fetch exchange rate:", error);
       }
-    };
-
+    }
     fetchExchangeRate();
   }, [setExchangeRate]);
 
