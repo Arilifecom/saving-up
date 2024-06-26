@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <>
       <div className="flex justify-end mb-4 md:max-w-3xl mx-auto">
         <TodaysDate />
         <GetExchangeRate setExchangeRate={setExchangeRate} />
@@ -78,6 +78,6 @@ export default function Home() {
       {alertMessage && (
         <CustomAlert message={alertMessage} onClose={closeAlert} />
       )}
-    </div>
+    </>
   );
 }
