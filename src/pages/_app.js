@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import TopScrollButton from "../components/TopScrollButton";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
       <main className="bg-bg_pink w-full min-h-screen text-sm text-textColor">
         <Component {...pageProps} />
       </main>
+      <TopScrollButton />
       <Footer />
     </>
   );
