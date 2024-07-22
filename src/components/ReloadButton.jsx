@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { RefreshIcon } from "./Icons";
+import { ReLoadIcon } from "./Icons";
 import { motion } from "framer-motion";
 
 const ReloadButton = () => {
@@ -38,7 +38,7 @@ const ReloadButton = () => {
             repeatType: "reverse",
           }}
         >
-          <RefreshIcon className={"w-10 h-auto"} />
+          <ReLoadIcon className={"w-10 h-auto"} />
         </motion.button>
       )}
     </>
