@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TopScrollButton from "../components/TopScrollButton";
+import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -49,6 +50,7 @@ function MyApp({ Component, pageProps }) {
           href="/favicon/android-chrome-512x512.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+        <Analytics />
       </Head>
       <Header />
       <main className="bg-bg_pink w-full min-h-screen text-sm text-textColor">
