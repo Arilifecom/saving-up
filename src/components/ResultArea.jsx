@@ -107,7 +107,7 @@ const ResultArea = ({ results }) => {
           <p className="w-[80%] border-b-[3px] py-3 text-center text-3xl bg-light text-headline">
             {results.weeklyTargetJPY}
           </p>
-          <p className="text-2xl m-4">/ 週</p>
+          <p className="text-xl m-4">/週</p>
         </div>
         <div className="flex justify-center items-center pt-3 pb-6">
           <p>AUDにすると</p>
@@ -118,14 +118,14 @@ const ResultArea = ({ results }) => {
           <p className="w-[80%] h-[60px] bg-bg_pink rounded py-3 text-center text-3xl text-headline">
             {results.weeklyTargetAUD}
           </p>
-          <p className="text-2xl ml-4">/ Week</p>
+          <p className="text-xl ml-4">/Week</p>
         </div>
         <h2 className="text-lg font-semibold ml-2">目標期日まで残り</h2>
         <div className="flex items-center mb-14">
           <p className="w-[80%] border-[3px] bg-light rounded py-3 text-center text-3xl text-headline">
             {results.remainingWeeks}
           </p>
-          <p className="text-2xl ml-4">/ 週間</p>
+          <p className="text-xl ml-4">/週間</p>
         </div>
       </div>
     </div>
