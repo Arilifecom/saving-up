@@ -1,4 +1,7 @@
 import React from "react";
+import { HomeIcon } from "../components/Icons";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const TermsOfService = () => {
   return (
@@ -90,6 +93,20 @@ const TermsOfService = () => {
           </li>
         </ul>
       </section>
+      <Link href="/">
+        <motion.button
+          className="fixed bottom-40 right-1"
+          animate={{ scale: [1, 1.1] }}
+          transition={{
+            repeat: Infinity,
+            duration: 0.8,
+            ease: "linear",
+            repeatType: "reverse",
+          }}
+        >
+          <HomeIcon className={"w-10 h-auto"} />
+        </motion.button>
+      </Link>
     </div>
   );
 };
