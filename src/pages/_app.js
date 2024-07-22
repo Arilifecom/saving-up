@@ -24,31 +24,31 @@ function MyApp({ Component, pageProps }) {
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/public/favicon/favicon-16x16.png"
+          href="/favicon/favicon-16x16.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/public/favicon/favicon-32x32.png"
+          href="/favicon/favicon-32x32.png"
         />
         <link
           rel="android-chrome"
           type="image/png"
           sizes="192x192"
-          href="/public/favicon/android-chrome-192x192.png"
+          href="/favicon/android-chrome-192x192.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/public/favicon/apple-touch-icon.png"
+          href="/favicon/apple-touch-icon.png"
         />
         <link
           rel="android-chrome"
           sizes="512x512"
-          href="/public/favicon/android-chrome-512x512.png"
+          href="/favicon/android-chrome-512x512.png"
         />
-        <link rel="manifest" href="/public/favicon/site.webmanifest" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <Header />
       <main className="bg-bg_pink w-full min-h-screen text-sm text-textColor">
