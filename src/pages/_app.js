@@ -50,6 +50,10 @@ function MyApp({ Component, pageProps }) {
           href="/favicon/android-chrome-512x512.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <meta http-equiv="Cache-Control" content="no-store" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
       </Head>
       <Header />
       <main className="bg-bg_pink w-full min-h-screen text-sm text-textColor">
