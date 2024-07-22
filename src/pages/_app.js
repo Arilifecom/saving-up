@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TopScrollButton from "../components/TopScrollButton";
 import { Analytics } from "@vercel/analytics/react";
+import ReloadButton from "../components/ReloadButton";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -61,6 +62,7 @@ function MyApp({ Component, pageProps }) {
         <Analytics />
       </main>
       <TopScrollButton />
+      <ReloadButton />
       <Footer />
     </>
   );

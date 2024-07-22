@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { TopScrollIcon } from "./Icons";
+import { RefreshIcon } from "./Icons";
 import { motion } from "framer-motion";
 
-const TopScrollButton = () => {
+const ReloadButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
@@ -13,11 +13,8 @@ const TopScrollButton = () => {
     }
   };
 
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const handleReload = () => {
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -31,8 +28,8 @@ const TopScrollButton = () => {
     <>
       {isVisible && (
         <motion.button
-          onClick={handleScrollToTop}
-          className="fixed bottom-16 right-1"
+          onClick={handleReload}
+          className="fixed bottom-28 right-1"
           animate={{ scale: [1, 1.1] }}
           transition={{
             repeat: Infinity,
@@ -41,11 +38,11 @@ const TopScrollButton = () => {
             repeatType: "reverse",
           }}
         >
-          <TopScrollIcon className={"w-10 h-auto"} />
+          <RefreshIcon className={"w-10 h-auto"} />
         </motion.button>
       )}
     </>
   );
 };
 
-export default TopScrollButton;
+export default ReloadButton;
