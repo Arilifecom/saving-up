@@ -5,7 +5,7 @@ import SubmitBtn from "../components/SubmitBtn";
 import ResultArea from "../components/ResultArea";
 import CustomAlert from "../components/CustomAlert";
 import { calculateResults } from "../utils/calculateResults";
-import { getExchangeRate } from "../components/GetExchangeRate"
+import getExchangeRate from "../components/GetExchangeRate";
 
 export async function getStaticProps() {
   const exchangeRate = await getExchangeRate(); // `getExchangeRate` を呼び出して為替レートを取得
