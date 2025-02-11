@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import TodaysDate from "../components/TodaysDate";
+import GetExchangeRate from "../components/GetExchangeRate";
 import InputArea from "../components/InputArea";
 import SubmitBtn from "../components/SubmitBtn";
 import ResultArea from "../components/ResultArea";
 import CustomAlert from "../components/CustomAlert";
 import { calculateResults } from "../utils/calculateResults";
-import getExchangeRate from "../components/GetExchangeRate";
 
-export async function getStaticProps() {
-  const exchangeRate = await getExchangeRate(); // `getExchangeRate` を呼び出して為替レートを取得
-
-  return {
-    props: {
-      exchangeRate, // 取得したデータをページコンポーネントに渡す
-    },
-    revalidate: 86400, // 24時間ごとに再生成
-  };
-}
-
-
-export default function Home({exchangeRate}) {
+export default function Home() {
+  const [exchangeRate, setExchangeRate] = useState(null);
   const [inputData, setInputData] = useState({
     targetJPY: "",
     currentValueJPY: "",
@@ -43,7 +32,8 @@ export default function Home({exchangeRate}) {
       !targetJPY ||
       !currentValueJPY ||
       !currentValueAUD ||
-      !targetDate
+      !targetDate ||
+      !exchangeRate
     ) {
       setAlertMessage("入力されていない箇所があります。");
       setShowResults(false);
@@ -63,10 +53,7 @@ export default function Home({exchangeRate}) {
     <>
       <div className="flex justify-end mb-4 md:max-w-3xl mx-auto">
         <TodaysDate />
-        <div>
-      <h2>現在のレート</h2>
-        <p className="border mr-2 rounded py-2 px-3.5">{exchangeRate}</p>
-    </div>
+        <GetExchangeRate setExchangeRate={setExchangeRate} />
       </div>
       <InputArea
         inputData={inputData}
