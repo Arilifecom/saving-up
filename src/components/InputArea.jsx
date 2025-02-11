@@ -25,7 +25,7 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
     : "";
 
   return (
-    <div className="grid gap-7 md:grid-cols-2 px-4 md:max-w-3xl mx-auto">
+    <div className="grid gap-7 px-4 md:max-w-xl mx-auto">
       <div className="w-ful bg-light rounded-lg px-4 py-12 shadow-md">
         <div className="flex place-items-center">
           <TargetIcon className={"w-10 h-10"} />
