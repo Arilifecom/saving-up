@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import TodaysDate from "../components/TodaysDate";
-import GetExchangeRate from "../components/GetExchangeRate";
 import InputArea from "../components/InputArea";
 import SubmitBtn from "../components/SubmitBtn";
 import ResultArea from "../components/ResultArea";
 import CustomAlert from "../components/CustomAlert";
 import { calculateResults } from "../utils/calculateResults";
 
-export default function Home() {
-  const [exchangeRate, setExchangeRate] = useState(null);
+
+export default function Home({exchangeRate}) {
   const [inputData, setInputData] = useState({
     targetJPY: "",
     currentValueJPY: "",
@@ -32,8 +31,7 @@ export default function Home() {
       !targetJPY ||
       !currentValueJPY ||
       !currentValueAUD ||
-      !targetDate ||
-      !exchangeRate
+      !targetDate
     ) {
       setAlertMessage("入力されていない箇所があります。");
       setShowResults(false);
@@ -51,9 +49,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-end mb-4 md:max-w-3xl mx-auto">
+      <div className="flex justify-end mb-4 md:max-w-xl px-4 mx-auto">
         <TodaysDate />
-        <GetExchangeRate setExchangeRate={setExchangeRate} />
+        <div>
+      <h2>現在のレート</h2>
+      <p className="border mr-2 rounded py-2 px-3.5">{exchangeRate ? exchangeRate : 'データの取得に失敗しました'}</p>
+    </div>
       </div>
       <InputArea
         inputData={inputData}
@@ -67,4 +68,35 @@ export default function Home() {
       )}
     </>
   );
+}
+
+
+export async function getStaticProps() {
+  const apiKey = process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY;
+  const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
+    }
+    const data = await res.json();
+    const exchangeRate = parseFloat(data.conversion_rates.JPY).toFixed(2);    
+
+    return{
+      props:{
+        exchangeRate,
+      },
+      revalidate: 86400,
+    };
+    
+  }catch (error){
+    console.error('Error fetching exchange rate:', error.message);
+
+  return{
+    props:{
+      exchangeRate: 'Error',
+    },
+  };
+}
 }
