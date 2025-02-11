@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TodaysDate from "../components/TodaysDate";
-import GetExchangeRate from "../components/GetExchangeRate";
 import InputArea from "../components/InputArea";
 import SubmitBtn from "../components/SubmitBtn";
 import ResultArea from "../components/ResultArea";
