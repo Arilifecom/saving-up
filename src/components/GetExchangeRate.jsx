@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
 
-const GetExchangeRate = ({ setExchangeRate }) => {
-  const [rate, setRate] = useState(null);
-
-  useEffect(() => {
-    async function fetchExchangeRate() {
+export async function GetExchangeRate (){
       try {
         const response = await fetch(`/api/exchangeRate`);
         if (!response.ok) {
@@ -12,21 +7,13 @@ const GetExchangeRate = ({ setExchangeRate }) => {
         }
         const data = await response.json();
         const roundedRate = parseFloat(data.conversion_rates.JPY).toFixed(2);
-        setExchangeRate(roundedRate);
-        setRate(roundedRate);
+        exchangeRate(roundedRate);
       } catch (error) {
         console.log("Failed to fetch exchange rate:", error);
       }
-    }
-    fetchExchangeRate();
-  }, [setExchangeRate]);
 
-  return (
-    <div>
-      <h2>現在のレート</h2>
-      <p className="border mr-2 rounded py-2 px-3.5">{rate}</p>
-    </div>
-  );
-};
+      return exchangeRate;
+    };
+
 
 export default GetExchangeRate;
