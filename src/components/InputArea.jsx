@@ -6,22 +6,22 @@ import {
   TargetIcon,
 } from "./Icons";
 
-const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
+const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
-    onInputChange(name, value);
+    handleInputChange(name, value);
   };
 
   const targetAUD = inputData.targetJPY
-    ? (parseFloat(inputData.targetJPY) / exchangeRate).toFixed(2)
+    ? (inputData.targetJPY / exchangeRate).toFixed(2)
     : "";
 
   const exchangedJPYtoAUD = inputData.currentValueJPY
-    ? (parseFloat(inputData.currentValueJPY) / exchangeRate).toFixed(2)
+    ? (inputData.currentValueJPY / exchangeRate).toFixed(2)
     : "";
 
   const exchangedAUDtoJPY = inputData.currentValueAUD
-    ? (parseFloat(inputData.currentValueAUD) * exchangeRate).toFixed(0)
+    ? (inputData.currentValueAUD) * exchangeRate
     : "";
 
   return (
@@ -33,7 +33,7 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
         </div>
         <div className="flex items-center justify-end">
           <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            貯めたい金額を日本円で入力してみよう
+            あなたは日本円で、いくら貯めたい？
           </div>
           <div className="w-3 overflow-hidden ">
             <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
@@ -50,7 +50,7 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
           name="targetJPY"
           value={inputData.targetJPY}
           onChange={handleChange}
-          placeholder="10000"
+          placeholder="1,000,000"
         />
         <div className="flex justify-center items-center py-3">
           <p>AUDにすると</p>
@@ -64,6 +64,33 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
         </p>
       </div>
 
+      <div className="w-ful bg-light rounded-lg px-4 py-12 shadow-md md:col-span-1">
+        <div className="flex place-items-center">
+          <TargetDayIcon className={"w-10 h-10"} />
+          <h2 className="text-lg ml-2 font-semibold">目標期日</h2>
+        </div>
+        <div className="flex items-center justify-end">
+          <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
+            いつまでに目標金額を貯めたい？ <br/>
+            期日を入力してね。
+          </div>
+          <div className="w-3 overflow-hidden ">
+            <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
+          </div>
+          <Icon className={"w-[50px] h-[50px] relative"} />
+          <span className="absolute rounded-full w-[50px] h-[50px] border" />
+        </div>
+
+        <input
+          className="w-full min-w-[300px] my-auto border-[3px] rounded py-3 text-center text-2xl pr-3 mb-14"
+          type="date"
+          name="targetDate"
+          value={inputData.targetDate}
+          onChange={handleChange}
+        />
+      </div>
+
+
       <div className="w-ful bg-light rounded-lg px-4 py-12 shadow-md md:col-span-1 md:row-span-2">
         <div className="flex place-items-center md:mb-5">
           <CurrentMoneyIcon className={"w-10 h-10"} />
@@ -72,7 +99,7 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
 
         <div className="flex items-center justify-end">
           <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            今持っている日本円はいくら？
+            日本円の貯金額を入れよう
           </div>
           <div className="w-3 overflow-hidden ">
             <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
@@ -106,7 +133,7 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
 
         <div className="flex items-center justify-end">
           <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            今持っているオーストラリアドルはいくら？
+            オーストラリアの貯金額を入れよう
           </div>
           <div className="w-3 overflow-hidden ">
             <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
@@ -138,31 +165,6 @@ const InputArea = ({ inputData, onInputChange, exchangeRate }) => {
         </p>
       </div>
 
-      <div className="w-ful bg-light rounded-lg px-4 py-12 shadow-md md:col-span-1">
-        <div className="flex place-items-center">
-          <TargetDayIcon className={"w-10 h-10"} />
-          <h2 className="text-lg ml-2 font-semibold">目標期日</h2>
-        </div>
-        <div className="flex items-center justify-end">
-          <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
-            いつまでに貯めたい？ <br />
-            目標の期日を入力してね。
-          </div>
-          <div className="w-3 overflow-hidden ">
-            <div className="h-4 bg-[#433832] rotate-45 transform origin-top-left rounded-sm"></div>
-          </div>
-          <Icon className={"w-[50px] h-[50px] relative"} />
-          <span className="absolute rounded-full w-[50px] h-[50px] border" />
-        </div>
-
-        <input
-          className="w-full min-w-[300px] my-auto border-[3px] rounded py-3 text-center text-2xl pr-3 mb-14"
-          type="date"
-          name="targetDate"
-          value={inputData.targetDate}
-          onChange={handleChange}
-        />
-      </div>
     </div>
   );
 };
