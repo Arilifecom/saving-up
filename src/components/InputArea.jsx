@@ -9,19 +9,31 @@ import {
 const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
-    handleInputChange(name, value);
+    const cursorPos = e.target.selectionStart; // 現在のカーソル位置を取得
+
+
+    if (name === "targetDate") {
+      handleInputChange(name, value);
+      return;
+    }
+
+    handleInputChange(name, value,cursorPos);
   };
 
-  const targetAUD = inputData.targetJPY
-    ? (inputData.targetJPY / exchangeRate).toFixed(2)
-    : "";
+  const parseCurrency = (value) => {
+  return Number(value.replace(/,/g, ""));
+};
+
+const targetAUD = inputData.targetJPY
+? new Intl.NumberFormat().format((parseCurrency(inputData.targetJPY) / exchangeRate).toFixed(2))
+: "";
 
   const exchangedJPYtoAUD = inputData.currentValueJPY
-    ? (inputData.currentValueJPY / exchangeRate).toFixed(2)
+    ? new Intl.NumberFormat().format((parseCurrency(inputData.currentValueJPY)/ exchangeRate).toFixed(2))
     : "";
 
   const exchangedAUDtoJPY = inputData.currentValueAUD
-    ? (inputData.currentValueAUD) * exchangeRate
+    ?new Intl.NumberFormat().format((parseCurrency(inputData.currentValueAUD) * exchangeRate).toFixed(0))
     : "";
 
   return (
@@ -46,7 +58,8 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
         </p>
         <input
           className="w-full border-[3px] rounded py-3 text-center text-2xl mb-5"
-          type="number"
+          type="text"
+          inputMode="numeic"
           name="targetJPY"
           value={inputData.targetJPY}
           onChange={handleChange}
@@ -60,7 +73,7 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
           AUD<span className="font-bold text-base text-primary">$</span>
         </p>
         <p className="w-full h-[60px] bg-primary rounded py-3 text-center text-2xl">
-          {targetAUD}
+        {targetAUD}
         </p>
       </div>
 
@@ -113,7 +126,7 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
         </p>
         <input
           className="w-full border-[3px] rounded py-3 text-center text-2xl mb-5"
-          type="number"
+          type="text"
           name="currentValueJPY"
           value={inputData.currentValueJPY}
           onChange={handleChange}
@@ -146,7 +159,8 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
         </p>
         <input
           className="w-full border-[3px] rounded py-3 text-center text-2xl mb-5"
-          type="number"
+          type="text"
+          inputMode="numeric"
           name="currentValueAUD"
           value={inputData.currentValueAUD}
           onChange={handleChange}

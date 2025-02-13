@@ -15,9 +15,39 @@ export default function Home({exchangeRate}) {
     currentValueAUD: "",
     targetDate: "",
   });
+
+  // カンマを追加する関数
+  const formatNumber = (value) => {
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 3桁ごとにカンマ
+  };
+
+
   //状態を更新｜handleInputChange関数｜propsでinpuAreaへ｜関数を通じてinpuAreayからデータ取得し、setInputDataで状態を更新（prevData）は前の状態を引きづいてname：に取得したvalueを渡す
-  const handleInputChange = (name, value) => {
-    setInputData((prevData) => ({ ...prevData, [name]: value }));
+  const handleInputChange = (name, value, cursorPos) => {
+     // targetDate の場合は処理をスキップ
+     if ( name === "targetDate") {
+      setInputData((prevData) => ({ ...prevData, [name]: value }));
+      console.log("homeで受け取っているデータです",value);
+
+      return;
+     };
+
+    // 数字以外の文字（カンマ含む）を削除
+    const rawValue = value.replace(/[^\d]/g, '');
+    const formattedValue = formatNumber(rawValue);
+
+    setInputData((prevData) => ({ ...prevData, [name]: formattedValue }));
+    console.log("homeで受け取っているデータです",formattedValue);
+
+    // カーソル位置を補正（カンマが増えた分だけ調整）
+    setTimeout(() => {
+      const inputElement = document.querySelector(`input[name=${name}]`);
+
+      if (inputElement) {
+        inputElement.selectionStart = cursorPos + (formattedValue.length - rawValue.length);
+        inputElement.selectionEnd = inputElement.selectionStart;
+      }
+    }, 0);
   };
 
     //状態管理｜結果を表示/非表示を管理
@@ -49,6 +79,7 @@ export default function Home({exchangeRate}) {
       }
 
       const calculatedResults = calculateResults(inputData, exchangeRate);
+      console.log("%o",inputData );
       setResults(calculatedResults);
       setShowResults(true);
     };
