@@ -8,44 +8,54 @@ import { calculateResults } from "../utils/calculateResults";
 
 
 export default function Home({exchangeRate}) {
+  //状態管理｜setInputDataでinputDateの状態を管理
   const [inputData, setInputData] = useState({
     targetJPY: "",
     currentValueJPY: "",
     currentValueAUD: "",
     targetDate: "",
   });
-  const [results, setResults] = useState({});
-  const [showResults, setShowResults] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-
+  //状態を更新｜handleInputChange関数｜propsでinpuAreaへ｜関数を通じてinpuAreayからデータ取得し、setInputDataで状態を更新（prevData）は前の状態を引きづいてname：に取得したvalueを渡す
   const handleInputChange = (name, value) => {
     setInputData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    const { targetJPY, currentValueJPY, currentValueAUD, targetDate } =
-      inputData;
+    //状態管理｜結果を表示/非表示を管理
+    const [showResults, setShowResults] = useState(false);
+    //状態管理｜inputDateの有無を確認/
+    const [alertMessage, setAlertMessage] = useState("");
+    //状態管理｜setResultsでresultsの状態を管理
+    const [results, setResults] = useState({});
 
-    // 入力フィールドのバリデーション
-    if (
-      !targetJPY ||
-      !currentValueJPY ||
-      !currentValueAUD ||
-      !targetDate
-    ) {
-      setAlertMessage("入力されていない箇所があります。");
-      setShowResults(false);
-      return;
-    }
+    // サブミットボタンがクリックされたら、下記を分割代入
+    //const targetJPY = inputData.targetJPY;
+    // const currentValueJPY = inputData.currentValueJPY;
+    // const currentValueAUD = inputData.currentValueAUD;
+    // const targetDate = inputData.targetDate;   
+    const handleSubmit = () => {
+      const { targetJPY, currentValueJPY, currentValueAUD, targetDate } =
+        inputData;
+        
+      // 入力フィールドにデータがない時
+      if (
+        !targetJPY ||
+        !currentValueJPY ||
+        !currentValueAUD ||
+        !targetDate
+      ) {
+        setAlertMessage("入力されていない箇所があります。");
+        setShowResults(false);
+        return;
+      }
 
-    const calculatedResults = calculateResults(inputData, exchangeRate);
-    setResults(calculatedResults);
-    setShowResults(true);
-  };
+      const calculatedResults = calculateResults(inputData, exchangeRate);
+      setResults(calculatedResults);
+      setShowResults(true);
+    };
 
-  const closeAlert = () => {
-    setAlertMessage("");
-  };
+    const closeAlert = () => {
+      setAlertMessage("");
+    };
 
   return (
     <>
@@ -58,7 +68,7 @@ export default function Home({exchangeRate}) {
       </div>
       <InputArea
         inputData={inputData}
-        onInputChange={handleInputChange}
+        handleInputChange={handleInputChange}
         exchangeRate={exchangeRate}
       />
       <SubmitBtn onSubmit={handleSubmit} />
