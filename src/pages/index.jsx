@@ -8,7 +8,7 @@ import { calculateResults } from "../utils/calculateResults";
 
 
 export default function Home({exchangeRate}) {
-  //状態管理｜setInputDataでinputDateの状態を管理
+  //状態管理｜入力データ
   const [inputData, setInputData] = useState({
     targetJPY: "",
     currentValueJPY: "",
@@ -16,28 +16,36 @@ export default function Home({exchangeRate}) {
     targetDate: "",
   });
 
-  // カンマを追加する関数
-  const formatNumber = (value) => {
-    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 3桁ごとにカンマ
-  };
+  //状態管理｜エラーメッセージ
+  const [alertMessage, setAlertMessage] = useState("");
 
+  //状態管理｜計算結果の表示/非表示
+  const [showResults, setShowResults] = useState(false);
 
-  //状態を更新｜handleInputChange関数｜propsでinpuAreaへ｜関数を通じてinpuAreayからデータ取得し、setInputDataで状態を更新（prevData）は前の状態を引きづいてname：に取得したvalueを渡す
+  //状態管理｜計算結果データの管理
+  const [results, setResults] = useState({});
+
+  //状態を更新｜handleInputChange関数｜propsでinpuAreaへ｜関数を通じてinpuAreaからデータ取得し、setInputDataで状態を更新（prevData）は前の状態を引きづいてname：に取得したvalueを渡す
   const handleInputChange = (name, value, cursorPos) => {
      // targetDate の場合は処理をスキップ
      if ( name === "targetDate") {
       setInputData((prevData) => ({ ...prevData, [name]: value }));
-      console.log("homeで受け取っているデータです",value);
-
       return;
      };
 
-    // 数字以外の文字（カンマ含む）を削除
-    const rawValue = value.replace(/[^\d]/g, '');
-    const formattedValue = formatNumber(rawValue);
+    // 取得したデータのカンマを取り除いて、数字のみかどうかをチェック
+    const rawValue = value.replace(/,/g, '');
 
+    // 数字以外の入力を防止
+    if (!/^[0-9]*$/.test(rawValue)) {
+      setAlertMessage("半角数字のみ入力できます");
+      return;
+    }
+    
+      setAlertMessage(""); // エラーメッセージをリセット
+    // カンマを追加する関数
+    const formattedValue = rawValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     setInputData((prevData) => ({ ...prevData, [name]: formattedValue }));
-    console.log("homeで受け取っているデータです",formattedValue);
 
     // カーソル位置を補正（カンマが増えた分だけ調整）
     setTimeout(() => {
@@ -48,20 +56,10 @@ export default function Home({exchangeRate}) {
         inputElement.selectionEnd = inputElement.selectionStart;
       }
     }, 0);
+
   };
-
-    //状態管理｜結果を表示/非表示を管理
-    const [showResults, setShowResults] = useState(false);
-    //状態管理｜inputDateの有無を確認/
-    const [alertMessage, setAlertMessage] = useState("");
-    //状態管理｜setResultsでresultsの状態を管理
-    const [results, setResults] = useState({});
-
-    // サブミットボタンがクリックされたら、下記を分割代入
-    //const targetJPY = inputData.targetJPY;
-    // const currentValueJPY = inputData.currentValueJPY;
-    // const currentValueAUD = inputData.currentValueAUD;
-    // const targetDate = inputData.targetDate;   
+   
+    // 状態を更新｜handleSubmit関数｜エラーチェック｜ユーザー入力データをcalculateResultsコンポーネントへ渡す｜計算結果をsetResultsに渡し状態更新｜setShowResultsにtrueを渡す
     const handleSubmit = () => {
       const { targetJPY, currentValueJPY, currentValueAUD, targetDate } =
         inputData;
@@ -78,8 +76,8 @@ export default function Home({exchangeRate}) {
         return;
       }
 
+      // 計算コンポーネントにユーザー入力データとレートを渡す
       const calculatedResults = calculateResults(inputData, exchangeRate);
-      console.log("%o",inputData );
       setResults(calculatedResults);
       setShowResults(true);
     };
@@ -87,6 +85,7 @@ export default function Home({exchangeRate}) {
     const closeAlert = () => {
       setAlertMessage("");
     };
+
 
   return (
     <>
@@ -102,6 +101,9 @@ export default function Home({exchangeRate}) {
         handleInputChange={handleInputChange}
         exchangeRate={exchangeRate}
       />
+      {alertMessage && (
+        <CustomAlert message={alertMessage} onClose={closeAlert} />
+      )}
       <SubmitBtn onSubmit={handleSubmit} />
       {showResults && <ResultArea results={results} />}
       {alertMessage && (
