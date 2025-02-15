@@ -7,7 +7,7 @@ import {
   WeeklyTagetIcon,
 } from "./Icons";
 
-const ResultArea = ({ results }) => {
+const ResultArea = ({ results,changeTarget }) => {
   
   return (
     <div className="grid gap-7 pb-14 px-4 md:max-w-xl mx-auto">
@@ -127,6 +127,10 @@ const ResultArea = ({ results }) => {
             {results.remainingWeeks}
           </p>
           <p className="text-xl ml-4">/週間</p>
+        </div>
+        <div className="">
+          <button onClick={changeTarget}><a href="#targetDateRef">期日を変更する</a></button>
+          <button onClick={changeTarget}><a href="#targetJPYRef">目標金額を変更する</a></button>
         </div>
       </div>
     </div>

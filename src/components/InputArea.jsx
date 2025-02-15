@@ -6,7 +6,9 @@ import {
   TargetIcon,
 } from "./Icons";
 
+
 const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     const cursorPos = e.target.selectionStart; // 現在のカーソル位置を取得
@@ -24,9 +26,9 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
   return Number(value.replace(/,/g, ""));
 };
 
-const targetAUD = inputData.targetJPY
-? new Intl.NumberFormat().format((parseCurrency(inputData.targetJPY) / exchangeRate).toFixed(2))
-: "";
+  const targetAUD = inputData.targetJPY
+  ? new Intl.NumberFormat().format((parseCurrency(inputData.targetJPY) / exchangeRate).toFixed(2))
+  : "";
 
   const exchangedJPYtoAUD = inputData.currentValueJPY
     ? new Intl.NumberFormat().format((parseCurrency(inputData.currentValueJPY)/ exchangeRate).toFixed(2))
@@ -35,13 +37,14 @@ const targetAUD = inputData.targetJPY
   const exchangedAUDtoJPY = inputData.currentValueAUD
     ?new Intl.NumberFormat().format((parseCurrency(inputData.currentValueAUD) * exchangeRate).toFixed(0))
     : "";
+    
 
   return (
     <div className="grid gap-7 px-4 md:max-w-xl mx-auto">
       <div className="w-ful bg-light rounded-lg px-4 py-12 shadow-md">
         <div className="flex place-items-center">
           <TargetIcon className={"w-10 h-10"} />
-          <h2 className="text-lg ml-2 font-semibold">目標金額</h2>
+          <h2 id="targetJPYRef" className="text-lg ml-2 font-semibold">目標金額</h2>
         </div>
         <div className="flex items-center justify-end">
           <div className="bg-[#433832] p-3 my-5 rounded-lg flex-1 text-light text-xs text-center">
@@ -77,7 +80,7 @@ const targetAUD = inputData.targetJPY
         </p>
       </div>
 
-      <div className="w-ful bg-light rounded-lg px-4 py-12 shadow-md md:col-span-1">
+      <div id="targetDateRef" className="w-ful bg-light rounded-lg px-4 py-12 shadow-md md:col-span-1">
         <div className="flex place-items-center">
           <TargetDayIcon className={"w-10 h-10"} />
           <h2 className="text-lg ml-2 font-semibold">目標期日</h2>

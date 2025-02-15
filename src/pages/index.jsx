@@ -86,7 +86,15 @@ export default function Home({exchangeRate}) {
       setAlertMessage("");
     };
 
-
+    //期日と目標金額再設定ボタンの処理
+    //ボタンクリックでrefを取得してページ内ジャンプ
+  
+    const changeTarget = () => {
+      // 目標期日セクションにスクロール
+      setShowResults(false);
+    };
+  
+  
   return (
     <>
       <div className="flex justify-end mb-4 md:max-w-xl px-4 mx-auto">
@@ -105,7 +113,7 @@ export default function Home({exchangeRate}) {
         <CustomAlert message={alertMessage} onClose={closeAlert} />
       )}
       <SubmitBtn onSubmit={handleSubmit} />
-      {showResults && <ResultArea results={results} />}
+      {showResults && <ResultArea results={results} changeTarget={changeTarget} />}
       {alertMessage && (
         <CustomAlert message={alertMessage} onClose={closeAlert} />
       )}
