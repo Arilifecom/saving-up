@@ -4,19 +4,29 @@ import {
   ExchangeIcon,
   Icon,
   ProgressIcon,
+  ResultNaviIcon,
   WeeklyTagetIcon,
 } from "./Icons";
+import { scroller } from "react-scroll";
 
-const ResultArea = ({ results,changeTarget }) => {
-  
+const ResultArea = ({ results, changeTarget }) => {
+  const handleClick = (targetRef) => {
+    scroller.scrollTo(targetRef, {
+      smooth: true,
+      duration: 300,
+      offset: -(window.innerHeight / 3),
+    });
+
+    // スクロール後に changeTarget() を実行
+    setTimeout(() => {
+      changeTarget();
+    }, 300);
+  };
+
   return (
     <div className="grid gap-7 pb-14 px-4 md:max-w-xl mx-auto">
       <div className="flex justify-center items-center">
-        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
-        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
-        <p className="text-2xl font-medium animate-bounce">結果をチェック</p>
-        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
-        <ExchangeIcon className={"w-10 h-10 animate-bounce"} />
+        <ResultNaviIcon className={"animate-bounce"} />
       </div>
       <div className="w-ful bg-light rounded-lg p-4 shadow-md">
         <div className="flex place-items-center">
@@ -122,15 +132,25 @@ const ResultArea = ({ results,changeTarget }) => {
           <p className="text-xl ml-4">/Week</p>
         </div>
         <h2 className="text-lg font-semibold ml-2">目標期日まで残り</h2>
-        <div className="flex items-center mb-14">
+        <div className="flex items-center mb-4">
           <p className="w-[80%] border-[3px] bg-light rounded py-3 text-center text-3xl text-headline">
             {results.remainingWeeks}
           </p>
           <p className="text-xl ml-4">/週間</p>
         </div>
-        <div className="">
-          <button onClick={changeTarget}><a href="#targetDateRef">期日を変更する</a></button>
-          <button onClick={changeTarget}><a href="#targetJPYRef">目標金額を変更する</a></button>
+        <div className="flex gap-3">
+          <button
+            className="block bg-transparent hover:bg-slate-700 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-700 hover:border-transparent rounded"
+            onClick={() => handleClick("targetJPYRef")}
+          >
+            目標金額を変更する
+          </button>
+          <button
+            className="block bg-transparent hover:bg-slate-700 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-700 hover:border-transparent rounded"
+            onClick={() => handleClick("targetDateRef")}
+          >
+            期日を変更する
+          </button>
         </div>
       </div>
     </div>
