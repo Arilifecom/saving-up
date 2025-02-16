@@ -118,11 +118,10 @@ export default function Home({ exchangeRate }) {
 }
 
 export async function getStaticProps() {
-  const apiKey = process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY;
-  const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`;
-
   try {
-    const res = await fetch(url);
+    const res = await fetch(
+      `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`
+    );
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
     }
