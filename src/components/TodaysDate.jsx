@@ -7,8 +7,10 @@ const TodaysDate = () => {
 
   return (
     <div>
-      <label>日付</label>
-      <p className="border mr-2 rounded py-2 px-4">{formattedDate}</p>
+      <label>今日の日付</label>
+      <p className="border border-headline mr-2 rounded py-2 px-4">
+        {formattedDate}
+      </p>
     </div>
   );
 };
