@@ -120,7 +120,7 @@ export default function Home({ exchangeRate }) {
 export async function getStaticProps() {
   try {
     const res = await fetch(
-      `${process.env.EXCHANGE_RATE_API_KEY}/api/exchangeRate`
+      `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`
     );
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
