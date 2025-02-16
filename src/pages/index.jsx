@@ -120,17 +120,16 @@ export default function Home({ exchangeRate }) {
 export async function getStaticProps() {
   try {
     const res = await fetch(
-      `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/exchange-rate`
     );
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
     }
     const data = await res.json();
-    const exchangeRate = parseFloat(data.conversion_rates.JPY).toFixed(2);
 
     return {
       props: {
-        exchangeRate,
+        exchangeRate: data.exchangeRate || "Error",
       },
       revalidate: 86400,
     };

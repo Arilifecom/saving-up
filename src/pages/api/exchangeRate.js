@@ -9,7 +9,9 @@ export default async function handler(req, res) {
       throw new Error("Failed to fetch exchange rate");
     }
     const data = await response.json();
-    res.status(200).json(data);
+    const exchangeRate = parseFloat(data.conversion_rates.JPY).toFixed(2);
+
+    res.status(200).json({ exchangeRate });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
