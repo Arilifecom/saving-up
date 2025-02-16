@@ -63,16 +63,16 @@ const SubmitBtn = ({ onSubmit }) => {
   return (
     <div
       ref={scope}
-      className="flex justify-center items-center min-w-[320px] py-16"
+      className="flex justify-center items-center min-w-[320px] pt-12 pb-3"
     >
       <motion.button
         onClick={onButtonClick}
         className="relative rounded-full text-light font-semibold bg-blue px-16 py-4 text-xl transition-colors z-[100]"
         whileHover={{ scale: 1.1 }}
       >
-        <span className="sr-only">Submit</span>
+        <span className="sr-only">計算する</span>
         <span className="block h-8 overflow-hidden" aria-hidden>
-          {["S", "u", "b", "m", "i", "t"].map((letter, index) => (
+          {["計", "算", "す", "る"].map((letter, index) => (
             <span
               data-letter={letter}
               className="letter relative inline-block h-8 leading-8 after:absolute after:left-0 after:top-full after:h-8 after:content-[attr(data-letter)]"
