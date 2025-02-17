@@ -139,7 +139,7 @@ export async function getStaticProps() {
 
     return {
       props: {
-        exchangeRate: "Error",
+        exchangeRate: "取得不可",
       },
     };
   }
