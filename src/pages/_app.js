@@ -18,8 +18,11 @@ function MyApp({ Component, pageProps }) {
           property="og:description"
           content="オーストラリアで日本円の貯金を頑張る人のための計算サイト。毎週ごとに必要な貯金額を自動計算｜為替を自動計算で簡単シンプル｜登録・ダウンロードなしですぐに使える"
         />
-        <meta property="og:image" content="" />
-        <meta property="og:url" content="https://saving-up.vercel.app" />
+        <meta
+          property="og:image"
+          content="https://saving-up.ari-life.com/img/ogp-img.jpg"
+        />
+        <meta property="og:url" content="https://saving-up.ari-life.com" />
         <meta property="og:type" content="website" />
 
         <link
