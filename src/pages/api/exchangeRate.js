@@ -1,16 +1,12 @@
 // pages/api/exchangeRate.js
-export default async function handler(req, res) {
-  const apiKey = process.env.EXCHANGE_RATE_API_KEY;
-  const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`;
+export default async function getExchangeRate(req, res) {
+  const url = `https://v6.exchangerate-api.com/v6/${process.env.EXCHANGE_RATE_API_KEY}/latest/AUD`;
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Failed to fetch exchange rate");
-    }
-    const data = await response.json();
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  const res = await fetch(url);
+  if (!res.ok) {
+    return res.status(500).json({ error: "Failed to fetch exchange rates" });
   }
+
+  const data = await res.json();
+  res.status(200).json(data);
 }

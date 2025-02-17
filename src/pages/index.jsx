@@ -119,9 +119,8 @@ export default function Home({ exchangeRate }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      `https://v6.exchangerate-api.com/v6/${apiKey}/latest/AUD`
-    );
+    const res = await fetch(`https://saving-up.vercel.app/api/exchangeRate`);
+
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
     }
@@ -139,7 +138,7 @@ export async function getStaticProps() {
 
     return {
       props: {
-        exchangeRate: "取得不可",
+        exchangeRate: "取得失敗",
       },
     };
   }
