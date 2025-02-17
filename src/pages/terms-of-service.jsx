@@ -15,7 +15,7 @@ const TermsOfService = () => {
         <ul className="mb-8">
           <li className="mb-4">
             <p className="font-medium">AUDとJPYの換算:</p>
-            オーストラリアドル（AUD）の現在の価値を日本円（JPY）に換算し、表示します。ただし、為替データは1日に１回のみの更新のため、誤差があります。
+            オーストラリアドル（AUD）の現在の価値を日本円（JPY）に換算し、表示します。ただし、為替データは24時間ごとの更新のためリアルタイムではありません。
           </li>
           <li>
             <p className="font-medium">目標金額の進捗管理:</p>
