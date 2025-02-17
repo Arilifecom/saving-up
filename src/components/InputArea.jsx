@@ -66,7 +66,7 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
         <input
           className="w-full border-[3px] rounded py-3 text-center text-2xl mb-5"
           type="text"
-          inputMode="numeic"
+          inputMode="numeric"
           name="targetJPY"
           value={inputData.targetJPY}
           onChange={handleChange}
@@ -135,6 +135,7 @@ const InputArea = ({ inputData, handleInputChange, exchangeRate }) => {
         <input
           className="w-full border-[3px] rounded py-3 text-center text-2xl mb-5"
           type="text"
+          inputMode="numeric"
           name="currentValueJPY"
           value={inputData.currentValueJPY}
           onChange={handleChange}
