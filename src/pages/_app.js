@@ -24,7 +24,16 @@ function MyApp({ Component, pageProps }) {
         />
         <meta property="og:url" content="https://saving-up.ari-life.com" />
         <meta property="og:type" content="website" />
-
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Saving UP" />
+        <meta
+          name="twitter:description"
+          content="オーストラリアで日本円の貯金を頑張る人のための計算サイト。毎週ごとに必要な貯金額を自動計算｜為替を自動計算で簡単シンプル｜登録・ダウンロードなしですぐに使える"
+        />
+        <meta
+          name="twitter:image"
+          content="https://saving-up.ari-life.com/img/ogp-img.jpg"
+        />
         <link
           rel="icon"
           type="image/png"
